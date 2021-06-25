@@ -1,0 +1,155 @@
+.header {
+    color: white;
+    position: relative;
+    max-height: 85vh;
+    overflow: hidden;
+
+    #myVideo {
+        width: 100%;
+    }
+    .over-video {
+        z-index: 2;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0) 80px
+        );
+        position: absolute;
+        padding: $medium-space $big-space;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.top-container {
+    display: flex;
+
+    &__logo {
+        flex-grow: 1;
+        justify-content: flex-end;
+        img {
+            width: 250px;
+
+            @include mobile() {
+                width: 150px;
+            }
+        }
+    }
+    .nav-container {
+        display: flex;
+        align-items: center;
+
+        &__item {
+            cursor: pointer;
+            margin-left: $big-space;
+            font-size: 0.9rem;
+            transition: 0.3s ease;
+            position: relative;
+
+            &:nth-last-child(n+3)::before {
+                content: '';
+                height: 1px;
+                width: 100%;
+                background-color: white;
+                position: absolute;
+                bottom: - $small-space;
+                transform: scale(0);
+                transform-origin: center;
+                transition: 0.3s;
+            }
+
+            &:hover {
+                &:nth-last-child(n+3)::before {
+                    transform: scale(1);
+                }
+            }
+
+            @include tablet-portrait() {
+                display: none;
+            }
+
+            &:first-child span {
+                margin-left: $small-space/2;
+                transition: 0.5s ease;
+            }
+            &:first-child:hover {
+                span {
+                    transform: rotate(-90deg);
+                }
+            }
+
+            &:nth-child(5) {
+                background-color: $pink-button;
+                color: white;
+                &:hover {
+                    background-color: $pink-button--on;
+                }
+            }
+
+            &:last-child {
+                font-size: 2rem;
+                display: none;
+                @include tablet-portrait {
+                    display: flex;
+                }
+            }
+        }
+    }
+}
+
+.main-container {
+    flex-grow: 1;
+    padding-right: 60%;
+    padding-left: $big-space * 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include tablet-portrait {
+        padding-right: 30%;
+        padding-left: $big-space;
+        h1 {
+            font-size: 2.7rem;
+        }
+    }
+
+    @include mobile() {
+        padding-right: 20%;
+        padding-left: $medium-space;
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: $small-space;
+        }
+        h3 {
+            font-size: 0.6rem;
+        }
+    }
+}
+
+.mobile-buttons {
+    display: none;
+    
+    @include mobile() {
+        display: flex;
+    }
+    button {
+        flex-basis: calc(50% - 4px);
+        &:first-child {
+            margin-right: $small-space;
+        }
+    }
+    .whatsapp {
+        background-color: $green-button;
+        color: white;
+    }
+
+    .info {
+        background-color: $pink-button;
+        color: white;
+        &:hover {
+            background-color: $pink-button--on;
+        }
+    }
+}

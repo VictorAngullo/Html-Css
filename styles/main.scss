@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;600;700;800&display=swap");
+
+//@import url("reset.css");
+
+$small-space: 8px;
+$medium-space: 15px;
+$big-space: 25px;
+$article-margin: 20%;
+$article-margin--tablet: 15%;
+$article-margin--mobile: 10%;
+
+$mobile_breakpoint: 576px;
+$tablet_breakpoint: 768px;
+$tablet_landscape_breakpoint: 992px;
+$desktop_breakpoint: 1200px;
+
+// SCSS Mixins
+@mixin mobile {
+    @media only screen and (max-width: #{$mobile_breakpoint}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen and (max-width: #{$tablet_breakpoint}) {
+        @content;
+    }
+}
+
+@mixin tablet-portrait {
+    @media only screen and (max-width: #{$tablet_landscape_breakpoint}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (max-width: #{$desktop_breakpoint}) {
+        @content;
+    }
+}
+
+@include tablet-portrait {
+    section {
+        padding-left: $article-margin--tablet !important;
+        padding-right: $article-margin--tablet !important;
+    }
+}
+
+@include mobile {
+    section {
+        padding-left: $article-margin--mobile !important;
+        padding-right: $article-margin--mobile !important;
+    }
+    section.bootcamps {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+$pink-button: #fe2f9f;
+$pink-button--on:#fa2295;
+$turquoise-button: rgb(1, 250, 215);
+$yellow-button: #fdc725;
+$blue: #4a40ec;
+$blue--on: #3830df;
+$blue-button: #a4a0f7;
+$green-button: #1fae9a;
+$green-button2: #05fad7;
+
+body,
+button {
+    font-family: "Work Sans", sans-serif;
+    font-size: 10px;
+    margin: 0;
+    transition: 0.2s ease;
+}
+
+@include mobile() {
+    body {
+        font-size: 5px;
+    }
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: $medium-space;
+}
+
+h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button {
+    min-height: 40px;
+    padding: $small-space + 3 $big-space;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+@import 'header-nav';
+@import 'contain';
+@import 'footer';
